@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">JetpackComposeLesson3</string>
+    <string name="content_description_user_profile_photo">Фото профиля пользователя</string>
+    <string name="content_description_notifications">Уведомления</string>
+    <string name="content_description_search_icon">Иконка поиска</string>
+    <string name="content_description_filter_icon">Иконка фильтрации</string>
+    <string name="content_description_image_manhwa">Картинка манхвы</string>
+    <string name="content_description_icon_calendar">Иконка календаря</string>
+    <string name="date">%1s - %2s %3s %4s</string>
+    <string name="content_description_icon_money">Иконка денег</string>
+    <string name="content_description_icon_author">Иконка карандаша, что обозначает автор</string>
+    <string name="content_description_icon_rating">Иконка рейтинга</string>
+</resources>
