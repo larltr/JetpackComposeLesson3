@@ -52,7 +52,7 @@ fun Screen(modifier: Modifier) {
         Column(modifier = Modifier.padding(top = 20.dp)) {
             UserInfo(modifier = Modifier)
             Search(modifier = Modifier)
-            ManhwasListColumn(modifier = Modifier)
+            ManhwasListColumn()
         }
     }
 }
@@ -176,17 +176,11 @@ fun ContainerSeeAll(modifier: Modifier) {
 }
 
 @Composable
-fun TheBestTours(modifier: Modifier){
+fun TheBestTours(modifier: Modifier) {
     Text(
         modifier = modifier,
         text = "The best manhwa",
         fontSize = 18.sp,
         color = Color.White
     )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun Screen() {
-    Screen(modifier = Modifier)
 }
