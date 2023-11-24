@@ -10,4 +10,13 @@
     <string name="content_description_icon_money">Иконка денег</string>
     <string name="content_description_icon_author">Иконка карандаша, что обозначает автор</string>
     <string name="content_description_icon_rating">Иконка рейтинга</string>
+    <string name="content_description_author_manhwa">Автор Манхвы</string>
+    <string name="text_day">/Day</string>
+    <string name="text_welcome_back">Welcome back</string>
+    <string name="user_name_li_angelika">Li Angelika</string>
+    <string name="text_the_best_manhwa">The best manhwa</string>
+    <string name="content_description_arrow">Иконка клавиатура стрелка вправо</string>
+    <string name="text_see_all">See all</string>
+    <string name="txet_4suggestions_for_you">Suggestions for you</string>
+    <string name="text_search">Search</string>
 </resources>

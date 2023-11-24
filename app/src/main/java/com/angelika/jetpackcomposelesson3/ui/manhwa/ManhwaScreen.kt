@@ -42,7 +42,7 @@ import com.angelika.jetpackcomposelesson3.ui.theme.Grey
 import com.angelika.jetpackcomposelesson3.ui.theme.LightGrey
 
 @Composable
-fun Screen(modifier: Modifier) {
+fun Screen(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -50,22 +50,22 @@ fun Screen(modifier: Modifier) {
             .padding(14.dp)
     ) {
         Column(modifier = Modifier.padding(top = 20.dp)) {
-            UserInfo(modifier = Modifier)
-            Search(modifier = Modifier)
+            UserInfo()
+            Search()
             ManhwasListColumn()
         }
     }
 }
 
 @Composable
-fun UserInfo(modifier: Modifier) {
+fun UserInfo(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxWidth()
     ) {
         Row {
             Image(
-                modifier = modifier
+                modifier = Modifier
                     .width(60.dp)
                     .height(60.dp)
                     .clip(CircleShape),
@@ -75,25 +75,25 @@ fun UserInfo(modifier: Modifier) {
                 ),
             )
             Column(
-                modifier = modifier
+                modifier = Modifier
                     .padding(top = 2.dp, start = 6.dp)
             ) {
                 Text(
-                    modifier = modifier,
-                    text = "Welcome back",
+                    modifier = Modifier,
+                    text = stringResource(R.string.text_welcome_back),
                     color = DarkGrey,
                     fontSize = 12.sp
                 )
                 Text(
-                    modifier = modifier.padding(top = 4.dp),
-                    text = "Li Angelika",
+                    modifier = Modifier.padding(top = 4.dp),
+                    text = stringResource(R.string.user_name_li_angelika),
                     color = Color.White,
                     fontSize = 16.sp
                 )
             }
         }
         Icon(
-            modifier = modifier
+            modifier = Modifier
                 .align(Alignment.CenterEnd),
             painter = painterResource(id = R.drawable.ic_notifications),
             contentDescription = stringResource(
@@ -106,7 +106,7 @@ fun UserInfo(modifier: Modifier) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Search(modifier: Modifier) {
+fun Search(modifier: Modifier = Modifier) {
     var text by remember {
         mutableStateOf("")
     }
@@ -135,7 +135,7 @@ fun Search(modifier: Modifier) {
             )
         },
         label = {
-            Text(text = "Search")
+            Text(text = stringResource(R.string.text_search))
         },
         trailingIcon = {
             Icon(
@@ -148,39 +148,43 @@ fun Search(modifier: Modifier) {
 }
 
 @Composable
-fun ContainerSeeAll(modifier: Modifier) {
+fun ContainerSeeAll(modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .padding(top = 24.dp)
             .fillMaxWidth()
     ) {
         Text(
-            modifier = modifier,
-            text = "Suggestions for you",
+            text = stringResource(R.string.txet_4suggestions_for_you),
             fontSize = 18.sp,
             color = Color.White
         )
         Spacer(modifier = Modifier.weight(1f))
         Text(
-            modifier = modifier.padding(top = 4.dp),
-            text = "See all",
+            modifier = Modifier.padding(top = 4.dp),
+            text = stringResource(R.string.text_see_all),
             fontSize = 12.sp,
             color = Color.White
         )
         Icon(
             imageVector = Icons.Sharp.KeyboardArrowRight,
-            contentDescription = "Иконка клавиатура стрелка вправо",
+            contentDescription = stringResource(R.string.content_description_arrow),
             tint = Color.White
         )
     }
 }
 
 @Composable
-fun TheBestTours(modifier: Modifier) {
+fun TheBestTours(modifier: Modifier = Modifier) {
     Text(
-        modifier = modifier,
-        text = "The best manhwa",
+        text = stringResource(R.string.text_the_best_manhwa),
         fontSize = 18.sp,
         color = Color.White
     )
+}
+
+@Preview
+@Composable
+fun Preview(){
+    Screen()
 }

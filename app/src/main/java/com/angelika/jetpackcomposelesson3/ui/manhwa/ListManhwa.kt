@@ -31,7 +31,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -50,7 +49,7 @@ fun ManhwasListColumn() {
         mutableStateListOf(
             Manhwa(
                 name = "Dark Moon",
-                author = "HYBE",
+                author = "H",
                 rating = 9.43,
                 releaseDate = 15,
                 lastRealise = 24,
@@ -95,7 +94,7 @@ fun fillManhwasList(manhwa: SnapshotStateList<Manhwa>) = with(manhwa) {
     add(
         Manhwa(
             name = "One princess",
-            author = "Plutos",
+            author = "P",
             rating = 9.74,
             releaseDate = 5,
             lastRealise = 29,
@@ -108,7 +107,7 @@ fun fillManhwasList(manhwa: SnapshotStateList<Manhwa>) = with(manhwa) {
     add(
         Manhwa(
             name = "True love",
-            author = "Kkokkali",
+            author = "K",
             rating = 9.72,
             releaseDate = 12,
             lastRealise = 13,
@@ -121,7 +120,7 @@ fun fillManhwasList(manhwa: SnapshotStateList<Manhwa>) = with(manhwa) {
     add(
         Manhwa(
             name = "Loop",
-            author = "Hae Moo Ri",
+            author = "R",
             rating = 9.62,
             releaseDate = 19,
             lastRealise = 30,
@@ -134,7 +133,7 @@ fun fillManhwasList(manhwa: SnapshotStateList<Manhwa>) = with(manhwa) {
     add(
         Manhwa(
             name = "From sleep",
-            author = "2L",
+            author = "L",
             rating = 10.0,
             releaseDate = 14,
             lastRealise = 25,
@@ -147,7 +146,7 @@ fun fillManhwasList(manhwa: SnapshotStateList<Manhwa>) = with(manhwa) {
     add(
         Manhwa(
             name = "My reason",
-            author = "YUJU",
+            author = "Y",
             rating = 9.70,
             releaseDate = 23,
             lastRealise = 19,
@@ -160,7 +159,7 @@ fun fillManhwasList(manhwa: SnapshotStateList<Manhwa>) = with(manhwa) {
     add(
         Manhwa(
             name = "Duke's indentured bride",
-            author = "Milcha",
+            author = "Y",
             rating = 9.78,
             releaseDate = 17,
             lastRealise = 21,
@@ -173,7 +172,7 @@ fun fillManhwasList(manhwa: SnapshotStateList<Manhwa>) = with(manhwa) {
     add(
         Manhwa(
             name = "Second marriage",
-            author = "Alpha Tart",
+            author = "Y",
             rating = 9.77,
             releaseDate = 8,
             lastRealise = 10,
@@ -186,7 +185,7 @@ fun fillManhwasList(manhwa: SnapshotStateList<Manhwa>) = with(manhwa) {
     add(
         Manhwa(
             name = "Seduce the villain's ",
-            author = "Dalsaeul",
+            author = "Y",
             rating = 9.43,
             releaseDate = 2,
             lastRealise = 17,
@@ -199,7 +198,7 @@ fun fillManhwasList(manhwa: SnapshotStateList<Manhwa>) = with(manhwa) {
     add(
         Manhwa(
             name = "Virtue Bestowed",
-            author = "BAE Hee Jin",
+            author = "Y",
             rating = 9.39,
             releaseDate = 3,
             lastRealise = 10,
@@ -212,7 +211,7 @@ fun fillManhwasList(manhwa: SnapshotStateList<Manhwa>) = with(manhwa) {
     add(
         Manhwa(
             name = "Dark Moon",
-            author = "HYBE",
+            author = "Y",
             rating = 9.43,
             releaseDate = 15,
             lastRealise = 24,
@@ -236,7 +235,7 @@ fun ManhwaItem1(modifier: Modifier = Modifier, manhwa: Manhwa) {
                 .size(height = 160.dp, width = 140.dp),
             model = ImageRequest.Builder(LocalContext.current).data(manhwa.image)
                 .crossfade(true).build(),
-            contentDescription = "image",
+            contentDescription = stringResource(R.string.content_description_image_manhwa),
             placeholder = painterResource(
                 id = R.drawable.image_not_found,
             ),
@@ -262,7 +261,9 @@ fun ManhwaItem1(modifier: Modifier = Modifier, manhwa: Manhwa) {
                 modifier = Modifier
                     .padding(start = 2.dp),
                 painter = painterResource(id = R.drawable.ic_rating),
-                contentDescription = "star image",
+                contentDescription = stringResource(
+                    R.string.content_description_icon_rating
+                ),
                 tint = Yellow
             )
         }
@@ -271,15 +272,16 @@ fun ManhwaItem1(modifier: Modifier = Modifier, manhwa: Manhwa) {
                 .padding(start = 12.dp, bottom = 8.dp)
                 .wrapContentSize()
                 .align(Alignment.BottomStart),
-
-            ) {
-            Text(text = manhwa.name, color = White, fontSize = 14.sp)
-
+        ) {
+            Text(
+                text = manhwa.name,
+                color = White,
+                fontSize = 14.sp
+            )
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
-                    modifier = Modifier,
                     painter = painterResource(id = R.drawable.ic_pencil),
-                    contentDescription = "location image",
+                    contentDescription = stringResource(R.string.content_description_author_manhwa),
                     tint = White
                 )
                 Text(
@@ -367,7 +369,7 @@ fun ManhwaItem2(modifier: Modifier = Modifier, manhwa: Manhwa) {
                     Text(
                         modifier = Modifier
                             .padding(top = 8.dp, start = 4.dp),
-                        text = "/Day",
+                        text = stringResource(R.string.text_day),
                         fontSize = 10.sp,
                         color = DarkGray
                     )
