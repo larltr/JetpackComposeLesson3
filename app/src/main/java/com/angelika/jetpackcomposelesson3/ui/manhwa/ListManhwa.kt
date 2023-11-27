@@ -39,8 +39,8 @@ import com.angelika.jetpackcomposelesson3.R
 import com.angelika.jetpackcomposelesson3.data.model.Manhwa
 import com.angelika.jetpackcomposelesson3.ui.theme.DarkBlue1
 import com.angelika.jetpackcomposelesson3.ui.theme.DarkBlue2
+import com.angelika.jetpackcomposelesson3.ui.theme.TransparentBlack
 import com.angelika.jetpackcomposelesson3.ui.theme.Yellow
-import com.angelika.jetpackcomposelesson3.ui.theme.transparentBlack
 
 @Composable
 fun ManhwasListColumn() {
@@ -68,7 +68,11 @@ fun ManhwasListColumn() {
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
         item {
-            ContainerSeeAll(modifier = Modifier)
+            ContainerSeeAll(
+                modifier = Modifier
+                    .padding(top = 24.dp)
+                    .fillMaxWidth()
+            )
         }
         item {
             LazyRow(
@@ -77,15 +81,24 @@ fun ManhwasListColumn() {
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 items(manhwas) {
-                    ManhwaItem1(manhwa = it)
+                    FirstManhwaItem(
+                        modifier = Modifier
+                            .clip(shape = RoundedCornerShape(15.dp))
+                            .size(height = 160.dp, width = 140.dp), manhwa = it
+                    )
                 }
             }
         }
         item {
-            TheBestTours(modifier = Modifier.padding(top = 26.dp))
+            TheBestManhwa(modifier = Modifier.padding(top = 26.dp))
         }
         items(manhwas) {
-            ManhwaItem2(modifier = Modifier.fillMaxWidth(), manhwa = it)
+            SecondManhwaItem(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(DarkBlue2), manhwa = it
+            )
         }
     }
 }
@@ -224,15 +237,13 @@ fun fillManhwasList(manhwa: SnapshotStateList<Manhwa>) = with(manhwa) {
 }
 
 @Composable
-fun ManhwaItem1(modifier: Modifier = Modifier, manhwa: Manhwa) {
+fun FirstManhwaItem(modifier: Modifier = Modifier, manhwa: Manhwa) {
     Box(
-        modifier
-            .clip(shape = RoundedCornerShape(15.dp))
-            .size(height = 160.dp, width = 140.dp)
+        modifier = modifier
     ) {
         AsyncImage(
             modifier = Modifier
-                .size(height = 160.dp, width = 140.dp),
+                .wrapContentSize(),
             model = ImageRequest.Builder(LocalContext.current).data(manhwa.image)
                 .crossfade(true).build(),
             contentDescription = stringResource(R.string.content_description_image_manhwa),
@@ -246,7 +257,7 @@ fun ManhwaItem1(modifier: Modifier = Modifier, manhwa: Manhwa) {
                 .padding(8.dp)
                 .align(Alignment.TopEnd)
                 .clip(shape = RoundedCornerShape(5.dp))
-                .background(Color(transparentBlack.value))
+                .background(Color(TransparentBlack.value))
                 .padding(2.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -295,12 +306,9 @@ fun ManhwaItem1(modifier: Modifier = Modifier, manhwa: Manhwa) {
 }
 
 @Composable
-fun ManhwaItem2(modifier: Modifier = Modifier, manhwa: Manhwa) {
+fun SecondManhwaItem(modifier: Modifier = Modifier, manhwa: Manhwa) {
     Box(
         modifier = modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(16.dp))
-            .background(DarkBlue2)
     ) {
         Row {
             AsyncImage(

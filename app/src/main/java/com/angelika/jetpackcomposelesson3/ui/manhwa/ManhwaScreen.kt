@@ -1,12 +1,10 @@
 package com.angelika.jetpackcomposelesson3.ui.manhwa
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -35,7 +33,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.angelika.jetpackcomposelesson3.R
-import com.angelika.jetpackcomposelesson3.ui.theme.DarkBlue1
 import com.angelika.jetpackcomposelesson3.ui.theme.DarkBlue2
 import com.angelika.jetpackcomposelesson3.ui.theme.DarkGrey
 import com.angelika.jetpackcomposelesson3.ui.theme.Grey
@@ -45,13 +42,15 @@ import com.angelika.jetpackcomposelesson3.ui.theme.LightGrey
 fun Screen(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
-            .fillMaxSize()
-            .background(DarkBlue1)
-            .padding(14.dp)
     ) {
         Column(modifier = Modifier.padding(top = 20.dp)) {
-            UserInfo()
-            Search()
+            UserInfo(modifier = Modifier.fillMaxWidth())
+            Search(
+                modifier = Modifier
+                    .padding(top = 20.dp)
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(10.dp))
+            )
             ManhwasListColumn()
         }
     }
@@ -61,7 +60,6 @@ fun Screen(modifier: Modifier = Modifier) {
 fun UserInfo(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
-            .fillMaxWidth()
     ) {
         Row {
             Image(
@@ -112,10 +110,7 @@ fun Search(modifier: Modifier = Modifier) {
     }
 
     TextField(
-        modifier = modifier
-            .padding(top = 20.dp)
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(10.dp)),
+        modifier = modifier,
         value = text,
         onValueChange = { newText ->
             text = newText
@@ -151,8 +146,6 @@ fun Search(modifier: Modifier = Modifier) {
 fun ContainerSeeAll(modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
-            .padding(top = 24.dp)
-            .fillMaxWidth()
     ) {
         Text(
             text = stringResource(R.string.txet_4suggestions_for_you),
@@ -175,8 +168,9 @@ fun ContainerSeeAll(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun TheBestTours(modifier: Modifier = Modifier) {
+fun TheBestManhwa(modifier: Modifier = Modifier) {
     Text(
+        modifier = modifier,
         text = stringResource(R.string.text_the_best_manhwa),
         fontSize = 18.sp,
         color = Color.White
@@ -185,6 +179,6 @@ fun TheBestTours(modifier: Modifier = Modifier) {
 
 @Preview
 @Composable
-fun Preview(){
+fun Preview() {
     Screen()
 }
